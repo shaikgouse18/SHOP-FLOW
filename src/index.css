@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f0f9ff;
+  --foreground: #0c4a6e;
+  --card: #ffffff;
+  --card-foreground: #0c4a6e;
+  --popover: #ffffff;
+  --popover-foreground: #0c4a6e;
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+  --secondary: #e0f2fe;
+  --secondary-foreground: #f97316;
+  --muted: #e0f2fe;
+  --muted-foreground: #0284c7;
+  --accent: #ea580c;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #bae6fd;
+  --input: #bae6fd;
+  --ring: #f97316;
+  --chart-1: #f97316;
+  --chart-2: #3b82f6;
+  --chart-3: #f59e0b;
+  --chart-4: #8b5cf6;
+  --chart-5: #eab308;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: #082f49;
+  --foreground: #f0f9ff;
+  --card: #0c4a6e;
+  --card-foreground: #f0f9ff;
+  --popover: #0c4a6e;
+  --popover-foreground: #f0f9ff;
+  --primary: #fb923c;
+  --primary-foreground: #1a1a1a;
+  --secondary: #0369a1;
+  --secondary-foreground: #fb923c;
+  --muted: #075985;
+  --muted-foreground: #7dd3fc;
+  --accent: #f97316;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #0369a1;
+  --input: #0369a1;
+  --ring: #fb923c;
+  --chart-1: #fb923c;
+  --chart-2: #60a5fa;
+  --chart-3: #fbbf24;
+  --chart-4: #a78bfa;
+  --chart-5: #facc15;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Custom UI/UX Animations & Utilities */
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md border-b border-white/10 shadow-sm transition-all duration-300;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl border border-white/5 shadow-2xl;
+    background-color: rgba(38, 38, 38, 0.4);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-up-delayed {
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s infinite alternate;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.2);
+  }
+
+  to {
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.6);
+  }
+}
