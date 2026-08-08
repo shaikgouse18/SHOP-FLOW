@@ -126,7 +126,11 @@ export default function ProductDetail() {
           <img
             src={product.image}
             alt={product.name}
-            className="rounded-lg"
+            className="rounded-lg object-cover w-full h-auto aspect-square bg-muted"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=800&q=80";
+            }}
           />
 
           {/* Info */}
@@ -141,8 +145,8 @@ export default function ProductDetail() {
                 <Star
                   key={i}
                   className={`h-4 w-4 ${i < Math.floor(product.rating)
-                      ? 'fill-yellow-500 text-yellow-500'
-                      : 'text-gray-300'
+                    ? 'fill-yellow-500 text-yellow-500'
+                    : 'text-gray-300'
                     }`}
                 />
               ))}
@@ -150,6 +154,26 @@ export default function ProductDetail() {
             </div>
 
             <p className="text-xl font-bold mt-4">₹{product.price}</p>
+
+            <div className="mt-3 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 px-3 py-2 rounded-md w-fit flex flex-col gap-1">
+              <div>
+                <span className="font-semibold">Order Placed:</span> {
+                  new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+                }
+              </div>
+              <div>
+                <span className="font-semibold">Expected Delivery:</span> {
+                  (() => {
+                    const minDate = new Date();
+                    minDate.setDate(minDate.getDate() + 3);
+                    const maxDate = new Date();
+                    maxDate.setDate(maxDate.getDate() + 5);
+                    const opts = { day: 'numeric', month: 'short' };
+                    return `${minDate.toLocaleDateString('en-GB', opts)} - ${maxDate.toLocaleDateString('en-GB', opts)}`;
+                  })()
+                }
+              </div>
+            </div>
 
             <p className="mt-4 text-muted-foreground">
               {product.description}
