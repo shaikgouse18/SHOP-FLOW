@@ -17,7 +17,7 @@ export default function Checkout() {
   const [orderComplete, setOrderComplete] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [paymentMethod, setPaymentMethod] = useState('credit-card');
+  const [paymentMethod, setPaymentMethod] = useState('razorpay');
 
   const [formData, setFormData] = useState({
     email: '',
@@ -51,8 +51,8 @@ export default function Checkout() {
     return unsubscribe;
   }, [navigate]);
 
-  const shipping = totalPrice > 100 ? 0 : 9.99;
-  const tax = totalPrice * 0.08;
+  const shipping = totalPrice >= 25000 ? 0 : 499; // Free shipping over ₹25,000, else ₹499
+  const tax = totalPrice * 0.18; // 18% GST for India
   const finalTotal = totalPrice + shipping + tax;
 
   const handleChange = (e) => {
@@ -81,8 +81,8 @@ export default function Checkout() {
     setIsProcessing(true);
 
     try {
-      // 💳 Mock a real payment processing delay for credit cards
-      if (paymentMethod === 'credit-card') {
+      // 💳 Mock a real payment processing delay for Razorpay
+      if (paymentMethod === 'razorpay') {
         await new Promise(resolve => setTimeout(resolve, 2500));
       }
 
@@ -174,7 +174,7 @@ export default function Checkout() {
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Tax (8%)</span>
+                  <span className="text-muted-foreground">Tax (18% GST)</span>
                   <span className="text-foreground">₹{confirmedOrder?.tax.toFixed(2)}</span>
                 </div>
               </div>
@@ -410,19 +410,19 @@ export default function Checkout() {
               <h2 className="text-lg font-semibold text-foreground mb-4">Payment Method</h2>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 p-4 border border-border rounded-lg cursor-pointer hover:bg-muted/50 transition"
-                  onClick={() => setPaymentMethod('credit-card')}>
+                  onClick={() => setPaymentMethod('razorpay')}>
                   <input
                     type="radio"
-                    id="credit-card"
+                    id="razorpay"
                     name="payment-method"
-                    value="credit-card"
-                    checked={paymentMethod === 'credit-card'}
+                    value="razorpay"
+                    checked={paymentMethod === 'razorpay'}
                     onChange={(e) => setPaymentMethod(e.target.value)}
                     className="w-4 h-4"
                   />
-                  <Label htmlFor="credit-card" className="flex-1 cursor-pointer mb-0">
-                    <span className="font-medium text-foreground">Credit/Debit Card</span>
-                    <p className="text-xs text-muted-foreground">Secure payment with card</p>
+                  <Label htmlFor="razorpay" className="flex-1 cursor-pointer mb-0">
+                    <span className="font-medium text-foreground">Razorpay (UPI, NetBanking, Cards)</span>
+                    <p className="text-xs text-muted-foreground">Secure payment via Razorpay India</p>
                   </Label>
                 </div>
 
@@ -445,8 +445,8 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Payment Information - Only show if Credit Card selected */}
-            {paymentMethod === 'credit-card' && (
+            {/* Payment Information - Only show if Razorpay is NOT selected since Razorpay would open a popup, but for mock purposes we'll keep card details if 'razorpay' is selected */}
+            {paymentMethod === 'razorpay' && (
               <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
                 <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                   <CreditCard className="h-5 w-5" /> Card Details
@@ -460,7 +460,7 @@ export default function Checkout() {
                       placeholder="John Doe"
                       value={formData.cardName}
                       onChange={handleChange}
-                      required={paymentMethod === 'credit-card'}
+                      required={paymentMethod === 'razorpay'}
                       className="mt-1.5"
                     />
                   </div>
@@ -473,7 +473,7 @@ export default function Checkout() {
                       value={formData.cardNumber}
                       onChange={handleChange}
                       maxLength="19"
-                      required={paymentMethod === 'credit-card'}
+                      required={paymentMethod === 'razorpay'}
                       className="mt-1.5"
                     />
                   </div>
@@ -487,7 +487,7 @@ export default function Checkout() {
                         value={formData.expiry}
                         onChange={handleChange}
                         maxLength="5"
-                        required={paymentMethod === 'credit-card'}
+                        required={paymentMethod === 'razorpay'}
                         className="mt-1.5"
                       />
                     </div>
@@ -500,7 +500,7 @@ export default function Checkout() {
                         value={formData.cvv}
                         onChange={handleChange}
                         maxLength="4"
-                        required={paymentMethod === 'credit-card'}
+                        required={paymentMethod === 'razorpay'}
                         className="mt-1.5"
                       />
                     </div>
