@@ -1,5 +1,5 @@
 export const MOCK_PRODUCTS = [
-    // --- MEN'S FASHION (4 Items) ---
+    // --- MEN'S FASHION (8 Items) ---
     {
         id: "prod-1",
         name: "AeroShield Thermal Parka",
@@ -117,8 +117,77 @@ export const MOCK_PRODUCTS = [
             { id: "rev-24", userEmail: "chloe.b@example.com", rating: 5, comment: "Lambskin is insanely soft yet structured. Perfect edge to any outfit.", createdAt: 1707400000000 }
         ]
     },
+    {
+        id: "prod-m6",
+        name: "Pure French Linen Resort Shirt",
+        description: "Relaxed-fit camp collar casual shirt woven from 100% breathable Normandy linen for summer ease.",
+        price: 4499,
+        compareAtPrice: 5999,
+        category: "Men's Fashion",
+        tags: ["Summer Essential", "Linen"],
+        stockStatus: "in_stock",
+        stockCount: 25,
+        rating: 4.7,
+        reviewCount: 29,
+        colors: ["Off-White Linen", "Midnight Navy", "Terracotta"],
+        sizes: ["S", "M", "L", "XL"],
+        images: [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80",
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&q=80",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800&q=80"
+        ],
+        reviews: [
+            { id: "rev-m6a", userEmail: "ryan.b@example.com", rating: 5, comment: "Extremely breathable fabric. Ideal for coastal vacations.", createdAt: 1707100000000 }
+        ]
+    },
+    {
+        id: "prod-m7",
+        name: "Slim-Fit Selvedge Chino Trousers",
+        description: "Tailored stretch-cotton chino trousers with hidden security pocket and custom corozo button closure.",
+        price: 6499,
+        compareAtPrice: 7999,
+        category: "Men's Fashion",
+        tags: ["Smart Casual", "Tailored"],
+        stockStatus: "in_stock",
+        stockCount: 30,
+        rating: 4.8,
+        reviewCount: 36,
+        colors: ["Khaki Beige", "Dark Charcoal", "Olive Green"],
+        sizes: ["30", "32", "34", "36"],
+        images: [
+            "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80",
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&q=80",
+            "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80"
+        ],
+        reviews: [
+            { id: "rev-m7a", userEmail: "connor.w@example.com", rating: 5, comment: "Sharp fit and just enough stretch for office comfort.", createdAt: 1707300000000 }
+        ]
+    },
+    {
+        id: "prod-m8",
+        name: "Fine Merino Wool Turtleneck",
+        description: "Lightweight 12-gauge Extra Fine Merino wool ribbed turtleneck knit sweater designed for effortless layering.",
+        price: 7999,
+        compareAtPrice: 9999,
+        category: "Men's Fashion",
+        tags: ["Merino Wool", "Sophisticated"],
+        stockStatus: "in_stock",
+        stockCount: 14,
+        rating: 4.9,
+        reviewCount: 21,
+        colors: ["Onyx Black", "Heather Grey", "Burgundy"],
+        sizes: ["S", "M", "L", "XL"],
+        images: [
+            "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=800&q=80",
+            "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=800&q=80",
+            "https://images.unsplash.com/photo-1544441893-675973e31985?w=800&q=80"
+        ],
+        reviews: [
+            { id: "rev-m8a", userEmail: "ethan.h@example.com", rating: 5, comment: "Super soft wool. Pairs amazingly well with a blazer.", createdAt: 1707500000000 }
+        ]
+    },
 
-    // --- WOMEN'S FASHION (4 Items) ---
+    // --- WOMEN'S FASHION (8 Items) ---
     {
         id: "prod-10",
         name: "Ethereal Silk Trench Coat",
@@ -209,6 +278,98 @@ export const MOCK_PRODUCTS = [
         ],
         reviews: [
             { id: "rev-20w", userEmail: "chloe.p@example.com", rating: 5, comment: "Extremely flattering waistline. Great for corporate or casual wear.", createdAt: 1707500000000 }
+        ]
+    },
+    {
+        id: "prod-w5",
+        name: "Sculpted Satin Slip Midi Dress",
+        description: "Bias-cut silk-satin slip dress featuring adjustable delicate straps and a subtle cowl neckline.",
+        price: 9999,
+        compareAtPrice: 13999,
+        category: "Women's Fashion",
+        tags: ["Silk Satin", "Minimalist"],
+        stockStatus: "in_stock",
+        stockCount: 20,
+        rating: 4.9,
+        reviewCount: 33,
+        colors: ["Onyx Black", "Pearl Ivory", "Dusty Rose"],
+        sizes: ["XS", "S", "M", "L"],
+        images: [
+            "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80",
+            "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80",
+            "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80"
+        ],
+        reviews: [
+            { id: "rev-w5a", userEmail: "camila.d@example.com", rating: 5, comment: "The bias cut accentuates curves gracefully. Pure perfection.", createdAt: 1707200000000 }
+        ]
+    },
+    {
+        id: "prod-w6",
+        name: "Oversized Double-Breasted Wool Coat",
+        description: "Cocoon-style double-breasted overcoat tailored from heavy virgin wool with dropped shoulder seams.",
+        price: 23999,
+        compareAtPrice: 29999,
+        category: "Women's Fashion",
+        tags: ["Statement Coat", "Virgin Wool"],
+        stockStatus: "in_stock",
+        stockCount: 12,
+        rating: 4.8,
+        reviewCount: 29,
+        colors: ["Camel Tan", "Charcoal Black"],
+        sizes: ["XS/S", "M/L"],
+        images: [
+            "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&q=80",
+            "https://images.unsplash.com/photo-1544441893-675973e31985?w=800&q=80",
+            "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=800&q=80"
+        ],
+        reviews: [
+            { id: "rev-w6a", userEmail: "isabella.r@example.com", rating: 5, comment: "Cozy, warm, and elevated. Looks high-end luxury.", createdAt: 1707400000000 }
+        ]
+    },
+    {
+        id: "prod-w7",
+        name: "Cropped Structured Power Blazer",
+        description: "Modern cropped blazer featuring padded shoulders, sharp peak lapels, and a single statement button closure.",
+        price: 11499,
+        compareAtPrice: 14999,
+        category: "Women's Fashion",
+        tags: ["Modern Tailoring", "Chic"],
+        stockStatus: "in_stock",
+        stockCount: 19,
+        rating: 4.7,
+        reviewCount: 24,
+        colors: ["Off-White", "Jet Black"],
+        sizes: ["XS", "S", "M", "L"],
+        images: [
+            "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80",
+            "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80",
+            "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80"
+        ],
+        reviews: [
+            { id: "rev-w7a", userEmail: "nora.s@example.com", rating: 5, comment: "Structured shoulders give an instant powerful silhouette.", createdAt: 1707600000000 }
+        ]
+    },
+    {
+        id: "prod-w8",
+        name: "Pleated Chiffon Flowing Midi Skirt",
+        description: "Accordion-pleated midi skirt in lightweight airy chiffon with elasticated satin waistband.",
+        price: 6499,
+        compareAtPrice: 8499,
+        category: "Women's Fashion",
+        tags: ["Flowing", "Elegance"],
+        stockStatus: "in_stock",
+        stockCount: 25,
+        rating: 4.8,
+        reviewCount: 30,
+        colors: ["Emerald Green", "Blush Pink", "Black Matte"],
+        sizes: ["XS", "S", "M", "L"],
+        images: [
+            "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=800&q=80",
+            "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80",
+            "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80"
+        ],
+        reviews: [
+            { id: "rev-w8a", userEmail: "maya.l@example.com", rating: 5, comment: "Moves gracefully as you walk. Super comfortable waist.", createdAt: 1707800000000 }
         ]
     },
 
