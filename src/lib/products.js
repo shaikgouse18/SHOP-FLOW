@@ -2,13 +2,36 @@ import { db } from "./firebase";
 import { collection, getDocs, doc, getDoc, updateDoc } from "firebase/firestore";
 import { MOCK_PRODUCTS } from "./mock-data";
 
-// Helper to normalize product images into an array format
+// Helper to normalize product images & category into consistent format
 const normalizeProduct = (p) => {
   if (!p) return null;
   const primaryImage = p.image || p.imageUrl || (p.images && p.images[0]) || "https://images.unsplash.com/photo-1544441893-675973e31985?w=800&q=80";
   const imageList = Array.isArray(p.images) && p.images.length > 0 ? p.images : [primaryImage];
+
+  let category = p.category || "Men's Fashion";
+  if (category === "Tailoring") {
+    category = "Men's Fashion";
+  } else if (category === "Clothing") {
+    const nameLower = (p.name || "").toLowerCase();
+    if (
+      nameLower.includes("dress") ||
+      nameLower.includes("skirt") ||
+      nameLower.includes("trench") ||
+      nameLower.includes("silk") ||
+      nameLower.includes("women") ||
+      nameLower.includes("cashmere") ||
+      nameLower.includes("velvet") ||
+      nameLower.includes("trousers")
+    ) {
+      category = "Women's Fashion";
+    } else {
+      category = "Men's Fashion";
+    }
+  }
+
   return {
     ...p,
+    category,
     image: primaryImage,
     images: imageList,
     rating: Number(p.rating || 4.8),
@@ -17,27 +40,27 @@ const normalizeProduct = (p) => {
   };
 };
 
-// Get all products with fallback
+// Get all products with seamless Firestore & Mock data merge
 export const getProducts = async () => {
+  let dbProducts = [];
   try {
     const snapshot = await getDocs(collection(db, "products"));
     if (snapshot && snapshot.docs && snapshot.docs.length > 0) {
-      const dbProducts = snapshot.docs.map((docItem) => normalizeProduct({
+      dbProducts = snapshot.docs.map((docItem) => normalizeProduct({
         id: docItem.id,
         ...docItem.data(),
       }));
-      // Merge DB products with mock products if DB has few items
-      if (dbProducts.length < 5) {
-        const dbIds = new Set(dbProducts.map(p => p.id));
-        const extraMocks = MOCK_PRODUCTS.filter(m => !dbIds.has(m.id)).map(normalizeProduct);
-        return [...dbProducts, ...extraMocks];
-      }
-      return dbProducts;
     }
   } catch (error) {
     console.warn("Firestore unreachable or empty, falling back to mock products:", error.message || error);
   }
-  return MOCK_PRODUCTS.map(normalizeProduct);
+
+  // Merge DB products with mock products so all categories have full item coverage
+  const dbIds = new Set(dbProducts.map(p => String(p.id)));
+  const extraMocks = MOCK_PRODUCTS.filter(m => !dbIds.has(String(m.id))).map(normalizeProduct);
+  const combined = [...dbProducts, ...extraMocks];
+
+  return combined.length > 0 ? combined : MOCK_PRODUCTS.map(normalizeProduct);
 };
 
 // Get single product with fallback
