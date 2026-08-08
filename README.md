@@ -1,4 +1,4 @@
-# 🛒 SHOP-FLOW - Modern E-Commerce Platform
+# 🛒 SHOP-FLOW — Modern Dark-Theme Storefront
 
 ![ShopFlow Banner](https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80)
 
@@ -15,63 +15,61 @@
 
 ## 🔗 Quick Links
 
-- 🌐 **Live Demo Application:** [https://shop-flow-gouse.vercel.app/](https://shop-flow-gouse.vercel.app/)
+- 🌐 **Live Storefront Demo:** [https://shop-flow-gouse.vercel.app/](https://shop-flow-gouse.vercel.app/)
 - 📦 **GitHub Repository:** [https://github.com/shaikgouse18/SHOP-FLOW](https://github.com/shaikgouse18/SHOP-FLOW)
 
 ---
 
-## 📖 About The Project
+## 📖 About Shop Flow
 
-**SHOP-FLOW** is a responsive, feature-rich e-commerce application designed to deliver an intuitive and fast shopping experience. From browsing products by categories to interactive product reviews, cart management, and seamless authentication, ShopFlow provides a end-to-end shopping experience powered by **React 19** and **Firebase**.
+**SHOP-FLOW** is a state-of-the-art e-commerce storefront redesigned with a dark aesthetic, fluid micro-interactions, responsive touch-optimized navigation, and resilient mock data fallback systems.
 
----
-
-## ✨ Key Features
-
-- 🛍️ **Product Catalog & Discovery:** Browse products across diverse categories (Electronics, Clothing, Bags, Accessories, Footwear, and more).
-- 🔍 **Smart Filtering & Sorting:** Instant client-side filtering by category/search query, plus sorting by price (low to high, high to low), ratings, and featured status.
-- ⭐️ **Product Reviews & Ratings:** Authenticated users can leave star ratings and detailed reviews on products, stored dynamically in Cloud Firestore.
-- 🛒 **Cart & Wishlist Management:** Interactive shopping cart with quantity management, dynamic price calculations, and centered pop-up notifications when items are added.
-- 🔐 **User Authentication:** Firebase Auth integration for seamless user registration, sign-in, and persistent session management.
-- 📦 **Order Tracking & History:** View past orders with estimated delivery dates, tracking status, and order item breakdowns.
-- 📱 **Fully Responsive UI:** Styled with Tailwind CSS, supporting mobile, tablet, and desktop viewports seamlessly.
+Whether evaluated with or without a live backend connection, **Shop Flow** provides an interactive shopping experience complete with multi-category product filtering (including **Men's Fashion**, **Women's Fashion**, **Electronics**, **Accessories**, **Footwear**, **Bags**, and **Home**), instant side drawer cart management, discount promo codes, express checkout, and order history tracking.
 
 ---
 
-## 🛠️ Tech Stack & Technologies
+## ✨ Key Features & Enhancements
+
+- 🖤 **Dark Theme Design System:** Built on a palette (`#0A0A0B`, `#141416`, `#1C1C1F`) with electric indigo highlights (`#6366F1`) and subtle glassmorphic elements.
+- 👔 **Men's & Women's Fashion Collections:** Dedicated categories for men's and women's apparel with multi-image product galleries, size/color variant selectors, and customer reviews.
+- ⚡ **Resilient Mock Data Engine (`mock-data.js`):** 24 products with fallbacks ensuring 100% demo availability without database downtime.
+- 🔍 **Interactive Filters & Sorting:** Real-time client-side filtering by category, search query, price slider (₹2,000–₹1,00,000), stock availability toggle, and sorting (Price, Rating, Newest).
+- 🖼️ **Product Gallery Lightbox:** Multi-image carousel slider on product detail pages with thumbnail controls, keyboard navigation, and full-screen lightbox zoom.
+- 🛒 **Cart & Free Shipping Bar:** Persistent cart state via `Zustand` with free shipping progress calculations, quantity modifiers, and promo codes (`SHOPFLOW10` / `DARKMODE20`).
+- 💳 **Express Checkout:** Inline form validation, payment method selector (Razorpay/Card, COD), order summary, and order completion screens.
+- 🔐 **Instant 1-Click Demo Auth:** Quick demo login alongside Firebase Auth and Google Sign-In support.
+- 📦 **My Orders Dashboard:** Order history overview with status badges (*Confirmed*, *Shipped*, *Delivered*, *Cancelled*) and cancellation options.
+
+---
+
+## 🛠️ Tech Stack & Architecture
 
 | Layer | Technology |
 | :--- | :--- |
 | **Frontend Core** | [React 19](https://react.dev/) & [React Router v7](https://reactrouter.com/) |
-| **Styling** | [Tailwind CSS v3](https://tailwindcss.com/) & Lucide React Icons |
-| **State Management** | [Zustand](https://github.com/pmndrs/zustand) & React Context API |
-| **Backend / Database** | [Firebase Cloud Firestore](https://firebase.google.com/docs/firestore) |
-| **Authentication** | [Firebase Auth](https://firebase.google.com/docs/auth) |
-| **Deployment & Hosting** | [Vercel](https://vercel.com/) |
+| **Styling & Icons** | [Tailwind CSS v3](https://tailwindcss.com/) & [Lucide React](https://lucide.dev/) |
+| **State Management** | [Zustand](https://github.com/pmndrs/zustand) (Cart persistence & drawer state) |
+| **Backend & Auth** | [Firebase Auth](https://firebase.google.com/docs/auth) & [Cloud Firestore](https://firebase.google.com/docs/firestore) |
+| **Data Fallback** | `src/lib/mock-data.js` & `src/lib/products.js` wrapper |
+| **Hosting & Deployment** | [Vercel](https://vercel.com/) with SPA route rewriting (`vercel.json`) |
 
 ---
 
 ## 💻 Local Setup & Development
 
-Follow these steps to clone and run the application locally on your machine:
-
 ### 1. Prerequisites
-- Node.js (v18.x or higher recommended)
-- npm (v9.x or higher)
+- **Node.js**: v18.x or higher
+- **npm**: v9.x or higher
 
-### 2. Clone the Repository
+### 2. Clone & Install
 ```bash
 git clone https://github.com/shaikgouse18/SHOP-FLOW.git
 cd SHOP-FLOW/ecommerce-app
-```
-
-### 3. Install Dependencies
-```bash
 npm install
 ```
 
-### 4. Configure Environment Variables
-Create a `.env` file in the `ecommerce-app` directory with your Firebase project credentials:
+### 3. Environment Configuration
+Create a `.env` file in `ecommerce-app`:
 
 ```env
 REACT_APP_FIREBASE_API_KEY=your_api_key
@@ -82,62 +80,44 @@ REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
 REACT_APP_FIREBASE_APP_ID=your_app_id
 ```
 
-> 💡 *Note: You can copy `.env.example` to create your `.env` file.*
-
-### 5. Launch Development Server
+### 4. Run Development Server
 ```bash
 npm start
 ```
-The application will open automatically at [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) to view the storefront.
 
 ---
 
-## 🚀 Deployment Guide
+## 🚀 Deployment Guide (Vercel)
 
-### 🐙 1. Deploying to GitHub
+The repository includes a tuned `vercel.json` configuration to prevent deployment issues:
 
-To push your latest changes to GitHub:
+```json
+{
+  "buildCommand": "CI=false npm run build",
+  "outputDirectory": "build",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
 
-1. **Stage all updated files:**
+### Deploy Steps:
+1. Push latest code to GitHub:
    ```bash
    git add .
-   ```
-
-2. **Commit your changes:**
-   ```bash
-   git commit -m "Update README, add Vercel routing configuration, and polish app"
-   ```
-
-3. **Push to the remote repository:**
-   ```bash
+   git commit -m "Update categories, dark theme polish, and Vercel build config"
    git push origin main
    ```
-
----
-
-### ⚡ 2. Deploying to Vercel
-
-ShopFlow is configured for continuous deployment on Vercel.
-
-#### **Option A: GitHub Integration (Recommended)**
-1. Go to [Vercel Dashboard](https://vercel.com/dashboard) and click **"Add New..."** ➡️ **"Project"**.
-2. Import your GitHub repository: `shaikgouse18/SHOP-FLOW`.
-3. Set the **Root Directory** to `ecommerce-app` (if the repo contains `ecommerce-app` as a subdirectory).
-4. Under **Framework Preset**, select **Create React App**.
-5. Expand **Environment Variables** and add all `REACT_APP_FIREBASE_*` keys from your `.env` file.
-6. Click **Deploy**. Vercel will automatically build and publish your site!
-
-#### **Option B: Vercel CLI**
-1. Install Vercel CLI globally:
-   ```bash
-   npm i -g vercel
-   ```
-2. Run deployment command inside the `ecommerce-app` directory:
-   ```bash
-   vercel --prod
-   ```
-
-> ⚠️ **SPA Route Support:** The included `vercel.json` ensures client-side routing (React Router) works seamlessly without `404` errors when refreshing routes on Vercel.
+2. In the [Vercel Dashboard](https://vercel.com/dashboard):
+   - **Root Directory**: `ecommerce-app`
+   - **Framework Preset**: Create React App
+   - **Build Command**: `CI=false npm run build`
+   - **Output Directory**: `build`
+3. Click **Deploy**. SPA rewrites prevent 404 errors when refreshing inner pages.
 
 ---
 
@@ -145,27 +125,21 @@ ShopFlow is configured for continuous deployment on Vercel.
 
 ```
 ecommerce-app/
-├── public/              # Static assets & HTML template
+├── public/              # Index template & favicon assets
 ├── src/
-│   ├── components/      # UI Components (Navbar, Footer, Modals, Cards)
-│   ├── context/         # React Context state management
-│   ├── firebase/        # Firebase initialization & services
-│   ├── pages/           # Page routes (Home, Products, Cart, Checkout, Admin)
-│   ├── types/           # Data models & helper definitions
-│   ├── App.jsx          # App entry with router setup
-│   └── index.css        # Tailwind CSS imports & global styles
-├── .env.example         # Template for environment variables
-├── vercel.json          # Vercel SPA rewrite configuration
-├── package.json         # Project dependencies & scripts
-└── README.md            # Documentation
+│   ├── components/      # UI Header, Footer, ProductCard, CartDrawer, HomeEditorial
+│   ├── lib/             # Firebase configuration, products API & mock-data.js
+│   ├── pages/           # Home, Products, ProductDetail, Cart, Checkout, Login, MyOrders
+│   ├── store/           # Zustand cart store (useCartStore.js)
+│   ├── App.js           # Router & layout entry point
+│   └── index.css        # Tailwind directives & dark theme utilities
+├── vercel.json          # Vercel SPA build & rewrite rules
+├── package.json         # Project scripts & dependencies
+└── README.md            # Project documentation
 ```
 
 ---
 
 ## 👤 Author
 
-- **Shaik Gouse** - [GitHub Profile](https://github.com/shaikgouse18)
-
----
-
-*Made with ❤️ for a modern e-commerce web experience.*
+- **Shaik Gouse** — [GitHub Profile](https://github.com/shaikgouse18)
